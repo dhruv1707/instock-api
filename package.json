@@ -4,15 +4,21 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "migrate:latest": "knex migrate:latest --knexfile=./models/knexfile.js",
+    "migrate:down": "knex migrate:down --knexfile=./models/knexfile.js",
+    "migrate:rollback": "knex migrate:rollback --knexfile=./models/knexfile.js",
+    "seed": "knex seed:run --knexfile=./models/knexfile.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
+    "express": "^4.21.2",
     "knex": "^3.1.0",
     "mysql2": "^3.14.0",
     "nodemon": "^3.1.9"
