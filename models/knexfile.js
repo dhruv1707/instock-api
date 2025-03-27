@@ -1,8 +1,6 @@
 import dotenv from "dotenv";
 
-dotenv.config({path: "../.env"});
-
-console.log('DB password', process.env.DB_PASSWORD);
+dotenv.config();
 
 export default {
   client: "mysql2",
