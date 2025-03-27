@@ -1,8 +1,10 @@
 import dotenv from "dotenv";
+import knex from "knex";
+import path from "path";
 
 dotenv.config();
 
-export default {
+export default knex({
   client: "mysql2",
   connection: {
     host: process.env.DB_HOST,
@@ -16,4 +18,4 @@ export default {
   seed: {
     directory: './seed'
   }
-}
+})

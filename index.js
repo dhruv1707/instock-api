@@ -1,19 +1,16 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-import warehousesRoutes from "./routes/warehouses-routes.js";
+import warehouseRouter from "./routes/warehouse.js";
 
 const app = express();
-const PORT = process.env.PORT || 5001;
 
 dotenv.config();
 app.use(cors());
+app.use(express.json());
 
-app.get("/", (req, res) => {
-    res.send("Welcome to inStock DB");
-});
-app.use("/warehouses", warehousesRoutes);
+app.use("/api/warehouses", warehouseRouter);
 
-app.listen(PORT, () => {
-    console.log(`running at http://localhost:${PORT}`);
-});
+app.listen(8000, () => {
+    console.log('Server listening on port 8000');
+})
