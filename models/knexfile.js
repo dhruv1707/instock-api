@@ -1,10 +1,12 @@
 import dotenv from "dotenv";
+import knex from "knex";
+import path from "path";
 
-dotenv.config({path: "../.env"});
+dotenv.config({path: path.join(process.cwd(), ".env")});
 
 console.log('DB password', process.env.DB_PASSWORD);
 
-export default {
+export default knex({
   client: "mysql2",
   connection: {
     host: "127.0.0.1", 
@@ -19,4 +21,6 @@ export default {
   seed: {
     directory: './seed'
   }
-}
+})
+
+console.log("DB connected");
