@@ -2,7 +2,7 @@ import db from "../models/knexfile.js";
 
 const findOne = async (req, res) => {
   try {
-    const warehouseFound = await knex("warehouses")
+    const warehouseFound = await db("warehouses")
       .where({ id: req.params.id });
 
     if (warehouseFound.length === 0) {
@@ -37,10 +37,10 @@ const add = async (req, res) => {
     }
 
     try {
-        const result = await knex("warehouses").insert(req.body);
+        const result = await db("warehouses").insert(req.body);
 
         const newWarehouseID = result[0];
-        const createdWarehouse = await knex("warehouses").where({ id: newWarehouseID });
+        const createdWarehouse = await db("warehouses").where({ id: newWarehouseID });
 
         res.status(201).json(createdWarehouse);
     } catch (error) {
