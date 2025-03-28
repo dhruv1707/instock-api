@@ -1,6 +1,5 @@
 import dotenv from "dotenv";
 import knex from "knex";
-import path from "path";
 
 dotenv.config();
 
