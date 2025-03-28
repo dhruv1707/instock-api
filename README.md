@@ -4,7 +4,7 @@ BrainStation | inStock Project
 ## MEMBERS:
 * [Dhruv Mehrottra](https://github.com/dhruv1707)
 * [Diego Pinlac II](https://github.com/TechSavvyCoder)
-* KC Fong
+* [KC Fong](https://github.com/kcfong808)
 * [Manuel Gatchalian](https://github.com/Yengzzkie)
 
 ## How to Use
