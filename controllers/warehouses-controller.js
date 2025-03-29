@@ -103,4 +103,13 @@ const deleteRecord = async(req, res) => {
   }
 }
 
-export { findOne, add, updateRecord, deleteRecord };
+const allWarehouses = async(req, res) => {
+  try {
+    const response = await db.select("warehouse_name", "address", "contact_name", "contact_phone", "contact_email").from("warehouses");
+    res.json(response);
+  } catch (error) {
+    res.status(500).send({message: "Error retrieving stuff from DB"});
+  }
+}
+
+export { findOne, add, updateRecord, deleteRecord, allWarehouses };
