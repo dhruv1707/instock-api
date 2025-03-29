@@ -105,7 +105,7 @@ const deleteRecord = async(req, res) => {
 
 const allWarehouses = async(req, res) => {
   try {
-    const response = await db.select("warehouse_name", "address", "contact_name", "contact_phone", "contact_email").from("warehouses");
+    const response = await db.select("warehouse_name", "address", "contact_name", "contact_phone", "contact_email", "city", "country").from("warehouses");
     res.json(response);
   } catch (error) {
     res.status(500).send({message: "Error retrieving stuff from DB"});
