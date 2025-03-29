@@ -5,6 +5,8 @@ const router = express.Router();
 
 router.patch('/:id', warehouseController.updateRecord);
 
+router.get("/", warehouseController.allWarehouses);
+
 router.delete('/:id', warehouseController.deleteRecord);
 
 router
