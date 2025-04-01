@@ -3,6 +3,8 @@ import cors from "cors";
 import dotenv from "dotenv";
 import warehouseRouter from "./routes/warehouse.js";
 
+// add the port to env instead
+const PORT = process.env.PORT || 8080;
 const app = express();
 
 dotenv.config();
@@ -11,6 +13,6 @@ app.use(express.json());
 
 app.use("/api/warehouses", warehouseRouter);
 
-app.listen(8000, () => {
-    console.log('Server listening on port 8000');
+app.listen(PORT, () => {
+    console.log(`Server listening on port ${PORT}`);
 })
