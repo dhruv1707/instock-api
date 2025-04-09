@@ -2,8 +2,6 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
-console.log
-
 export default {
   client: "mysql2",
   connection: {
