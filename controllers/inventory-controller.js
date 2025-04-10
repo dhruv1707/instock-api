@@ -19,4 +19,15 @@ const getInventoryByWarehouseId = async (req, res) => {
   }
 };
 
-export { getInventoryByWarehouseId };
+// get the details of item based on ID
+const getItemDetailsById = async (req, res) => {
+  try {
+    const response = await knex("inventories").where({ id: req.params.id });
+
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(500).json({ message: `Unable to retrieve item data with ID ${req.params.id}`});
+  }
+}
+
+export { getInventoryByWarehouseId, getItemDetailsById };
