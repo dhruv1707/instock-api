@@ -47,7 +47,7 @@ const getItemDetailsById = async (req, res) => {
       .select("inventories.*", "warehouses.warehouse_name as warehouse_name")
       .first();
 
-    if (response.length === 0) {
+    if (!response) {
       return res
         .status(404)
         .json({ message: `Item with ID ${req.params.id} not found` });
@@ -61,4 +61,24 @@ const getItemDetailsById = async (req, res) => {
   }
 };
 
-export { getInventoryByWarehouseId, getItemDetailsById, getAllInventory };
+const deleteItemById = async (req, res) => {
+  try {
+    const response = await knex("inventories")
+      .where("inventories.id", req.params.id)
+      .del();
+
+    if (!response) {
+      return res
+        .status(404)
+        .json({ message: `Item with ID ${req.params.id} not found` });
+    }
+
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(500).json({
+      message: `Unable to retrieve item data with ID ${req.params.id}`,
+    });
+  }
+};
+
+export { getInventoryByWarehouseId, getItemDetailsById, getAllInventory, deleteItemById };

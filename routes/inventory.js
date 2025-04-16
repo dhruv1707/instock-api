@@ -4,10 +4,15 @@ import * as inventoryController from "../controllers/inventory-controller.js";
 const router = express.Router();
 // get all the inventory for all warehouses
 // usage: GET /api/inventories
-router.route("/").get(inventoryController.getAllInventory);
+router.route("/")
+.get(inventoryController.getAllInventory);
+// add a new inventory
+// usage: POST /api/inventories
 
 // get item details based on ID
 // usage: GET /api/inventories/:id
-router.route("/:id").get(inventoryController.getItemDetailsById);
+router.route("/:id")
+.get(inventoryController.getItemDetailsById)
+.delete(inventoryController.deleteItemById);
 
 export default router;
