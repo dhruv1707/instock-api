@@ -5,9 +5,10 @@ const router = express.Router();
 // get all the inventory for all warehouses
 // usage: GET /api/inventories
 router.route("/")
-.get(inventoryController.getAllInventory);
+.get(inventoryController.getAllInventory)
 // add a new inventory
 // usage: POST /api/inventories
+.post(inventoryController.addInventoryItem)
 
 // get item details based on ID
 // usage: GET /api/inventories/:id
