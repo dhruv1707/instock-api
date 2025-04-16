@@ -59,7 +59,6 @@ const add = async (req, res) => {
     });
 
     console.log(req.body)
-    ``
     res.status(201).json(createdWarehouse);
   } catch (error) {
     res.status(500).json({

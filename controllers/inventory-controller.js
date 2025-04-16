@@ -99,6 +99,62 @@ const getItemDetailsById = async (req, res) => {
   }
 };
 
+const updateItemByID = async (req, res) => {
+  const { id } = req.params;
+  console.log("Request body", req.body, req.params);
+  
+  const {
+    warehouse_id,
+    item_name,
+    description,
+    category,
+    status,
+    quantity,
+  } = req.body;
+
+  // Validate required fields
+  if (
+    !warehouse_id ||
+    !item_name ||
+    !description ||
+    !category ||
+    !status ||
+    quantity === undefined // allow zero quantity, but not undefined/null
+  ) {
+    console.log("One or more fields are missing");
+    return res.status(400).send({ message: "One or more fields are missing" });
+  }
+
+  // Validate quantity is a non-negative number
+  if (isNaN(quantity) || quantity < 0) {
+    return res.status(400).send({ message: "Invalid quantity value" });
+  }
+
+  try {
+    const response = await knex("inventories").where("id", id);
+
+    if (response.length === 0) {
+      return res.status(404).send({ message: "Item not found" });
+    }
+
+    await knex("inventories").where("id", id).update({
+      warehouse_id,
+      item_name,
+      description,
+      category,
+      status,
+      quantity,
+    });
+
+    const updatedItem = await knex("inventories").where("id", id);
+    res.json(updatedItem[0]);
+  } catch (error) {
+    console.error("Error updating item:", error);
+    res.status(500).send({ message: "Server error" });
+  }
+};
+
+
 const deleteItemById = async (req, res) => {
   try {
     const response = await knex("inventories")
@@ -119,4 +175,4 @@ const deleteItemById = async (req, res) => {
   }
 };
 
-export { getInventoryByWarehouseId, addInventoryItem, getItemDetailsById, getAllInventory, deleteItemById };
+export { getInventoryByWarehouseId, addInventoryItem, updateItemByID, getItemDetailsById, getAllInventory, deleteItemById };
