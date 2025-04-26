@@ -1,20 +1,14 @@
 import dotenv from "dotenv";
-import knex from "knex";
 
 dotenv.config();
 
-export default knex({
+export default {
   client: "mysql2",
   connection: {
-    host: process.env.DB_HOST,
-    database: process.env.DB_NAME,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
+    host: "127.0.0.1",
+    database: "instock",
+    user: "root",
+    password: "rootroot",
+    charset: "utf8",
   },
-  migrations: {
-    directory: './migrations'
-  },
-  seed: {
-    directory: './seed'
-  }
-})
+};

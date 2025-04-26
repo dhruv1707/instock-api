@@ -5,15 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon index.js",
-    "migrate:latest": "knex migrate:latest --knexfile=./models/knexfile.js",
-    "migrate:down": "knex migrate:down --knexfile=./models/knexfile.js",
-    "migrate:rollback": "knex migrate:rollback --knexfile=./models/knexfile.js",
-    "seed": "knex seed:run --knexfile=./models/knexfile.js"
+    "migrate:latest": "node -r dotenv/config node_modules/.bin/knex migrate:latest --knexfile=./models/knexfile.js",
+    "migrate:down": "node -r dotenv/config node_modules/.bin/knex migrate:down --knexfile=./models/knexfile.js",
+    "migrate:rollback": "node -r dotenv/config node_modules/.bin/knex migrate:rollback --knexfile=./models/knexfile.js",
+    "seed": "node -r dotenv/config node_modules/.bin/knex seed:run --knexfile=./models/knexfile.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
+  "description": "BrainStation | inStock Project",
   "dependencies": {
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
@@ -22,5 +22,13 @@
     "knex": "^3.1.0",
     "mysql2": "^3.14.0",
     "nodemon": "^3.1.9"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhruv1707/instock-api.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dhruv1707/instock-api/issues"
+  },
+  "homepage": "https://github.com/dhruv1707/instock-api#readme"
 }
